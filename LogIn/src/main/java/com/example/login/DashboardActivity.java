@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +39,14 @@ public class DashboardActivity extends AppCompatActivity {
         Intent intent=getIntent();
         token=intent.getStringExtra("token");
 
+        Log.e("TAG", "token: "+token );
+binding.userFeatureTextBtn.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent=new Intent(DashboardActivity.this,UserFeatureActivity.class);
+        startActivity(intent);
+    }
+});
 
 
         apiInterface.getUrl2().enqueue(new Callback<ResponseURL>() {
@@ -49,9 +59,6 @@ public class DashboardActivity extends AppCompatActivity {
                     base64=new String(data,"UTF-8");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
-                }
-                if(response.body()!=null){
-//                    Toast.makeText(DashboardActivity.this, base64, Toast.LENGTH_SHORT).show();
                 }
                 getDashboard(token,base64);
 

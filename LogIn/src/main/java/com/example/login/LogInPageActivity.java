@@ -91,6 +91,7 @@ public class LogInPageActivity extends AppCompatActivity {
                     progressDialog.setCanceledOnTouchOutside(false);
                     Intent intent=new Intent(LogInPageActivity.this,DashboardActivity.class);
                     intent.putExtra("token",response.body().getToken());
+                    Constants.Token = response.body().getToken();
                     intent.putExtra("adminName",response.body().getAdminName());
                     startActivity(intent);
                     progressDialog.dismiss();

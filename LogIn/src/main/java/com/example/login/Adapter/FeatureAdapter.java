@@ -12,11 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.login.Model.UserFeatureItem;
 import com.example.login.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FeatureAdapter extends RecyclerView.Adapter<FeatureAdapter.ViewHolder> {
 
-    List<UserFeatureItem> list;
+    List<UserFeatureItem> list = new ArrayList<>();
     Context context;
 
     public FeatureAdapter(List<UserFeatureItem> list, Context context) {
