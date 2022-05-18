@@ -28,6 +28,7 @@ public class LogInPageActivity extends AppCompatActivity {
     String userNameText="";
     String passwordText="";
     ProgressDialog progressDialog;
+    String token="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,10 +85,11 @@ public class LogInPageActivity extends AppCompatActivity {
         apiInterface.getLogin(requestLoginDetails,base64).enqueue(new Callback<FinalResponse>() {
             @Override
             public void onResponse(Call<FinalResponse> call, Response<FinalResponse> response) {
+
                 if(response.body()!=null){
                     progressDialog.show();
                     progressDialog.setCanceledOnTouchOutside(false);
-                    Intent intent=new Intent(LogInPageActivity.this,SecondActivity.class);
+                    Intent intent=new Intent(LogInPageActivity.this,DashboardActivity.class);
                     intent.putExtra("token",response.body().getToken());
                     intent.putExtra("adminName",response.body().getAdminName());
                     startActivity(intent);
