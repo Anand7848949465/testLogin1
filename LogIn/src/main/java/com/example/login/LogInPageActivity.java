@@ -2,6 +2,7 @@ package com.example.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Base64;
@@ -26,17 +27,23 @@ public class LogInPageActivity extends AppCompatActivity {
     RequestLoginDetails requestLoginDetails;
     String userNameText="";
     String passwordText="";
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=ActivityLogInPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        progressDialog=new ProgressDialog(this);
+        progressDialog.setTitle("Login");
+        progressDialog.setMessage("Wait....");
+
 
 
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 apiInterface= RetrofitInstance.getRetrofit().create(ApiInterface.class);
                 apiInterface.getUrl().enqueue(new Callback<ResponseURL>() {
                     @Override
@@ -78,10 +85,13 @@ public class LogInPageActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<FinalResponse> call, Response<FinalResponse> response) {
                 if(response.body()!=null){
+                    progressDialog.show();
+                    progressDialog.setCanceledOnTouchOutside(false);
                     Intent intent=new Intent(LogInPageActivity.this,SecondActivity.class);
                     intent.putExtra("token",response.body().getToken());
                     intent.putExtra("adminName",response.body().getAdminName());
                     startActivity(intent);
+                    progressDialog.dismiss();
                 }
             }
 
