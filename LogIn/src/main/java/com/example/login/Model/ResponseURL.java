@@ -6,7 +6,6 @@ public class ResponseURL{
 
 	@SerializedName("hello")
 	private String hello;
-
 	public void setHello(String hello){
 		this.hello = hello;
 	}

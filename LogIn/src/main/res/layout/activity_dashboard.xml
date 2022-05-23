@@ -184,4 +184,70 @@
         app:layout_constraintStart_toStartOf="@+id/adminNameEditText"
         app:layout_constraintTop_toTopOf="@+id/textView7"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/fetchStatusBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fetch Status"
+        app:layout_constraintBottom_toBottomOf="@+id/textView8"
+        app:layout_constraintEnd_toEndOf="@+id/mPosNoEditText"
+        app:layout_constraintStart_toStartOf="@+id/mPosNoEditText"
+        app:layout_constraintTop_toBottomOf="@+id/mPosNoEditText"
+        app:layout_constraintVertical_bias="0.76" />
+
+    <Button
+        android:id="@+id/dynamicFeatureBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Dynamic Feature"
+        app:layout_constraintEnd_toEndOf="@+id/fetchStatusBtn"
+        app:layout_constraintStart_toStartOf="@+id/fetchStatusBtn"
+        app:layout_constraintTop_toBottomOf="@+id/fetchStatusBtn" />
+
+    <Button
+        android:id="@+id/wallet1Btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:text="Wallet 1"
+        app:layout_constraintEnd_toStartOf="@+id/wallet2Btn"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <Button
+        android:id="@+id/wallet2Btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="32dp"
+        android:text="Wallet 2"
+        app:layout_constraintBottom_toBottomOf="@+id/wallet1Btn"
+        app:layout_constraintEnd_toEndOf="@+id/dynamicFeatureBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/wallet1Btn"
+        app:layout_constraintTop_toTopOf="@+id/wallet1Btn" />
+
+    <Button
+        android:id="@+id/shopDetailsBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Shop Details"
+        app:layout_constraintEnd_toEndOf="@+id/wallet2Btn"
+        app:layout_constraintStart_toStartOf="@+id/wallet1Btn"
+        app:layout_constraintTop_toBottomOf="@+id/wallet1Btn" />
+
+    <Button
+        android:id="@+id/adminDetailsBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="Admin Details"
+        app:layout_constraintBottom_toBottomOf="@+id/shopDetailsBtn"
+        app:layout_constraintStart_toEndOf="@+id/shopDetailsBtn"
+        app:layout_constraintTop_toTopOf="@+id/shopDetailsBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

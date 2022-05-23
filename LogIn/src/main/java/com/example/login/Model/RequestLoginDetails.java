@@ -9,11 +9,16 @@ public class RequestLoginDetails {
 
     @SerializedName("username")
     private String username;
+    private String user_name;
 
     public RequestLoginDetails(String username, String password) {
         this.password = password;
         this.username = username;
     }
+    public RequestLoginDetails(String username){
+        this.username=username;
+    }
+
 
     public void setPassword(String password){
         this.password = password;

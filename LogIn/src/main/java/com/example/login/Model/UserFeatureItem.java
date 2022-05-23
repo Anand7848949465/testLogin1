@@ -1,17 +1,9 @@
 package com.example.login.Model;
 
-import com.google.gson.annotations.SerializedName;
-
 public class UserFeatureItem{
-
-	@SerializedName("featureName")
 	private String featureName;
-
-	@SerializedName("active")
 	private boolean active;
-
-	@SerializedName("id")
-	private String id;
+	private int id;
 
 	public void setFeatureName(String featureName){
 		this.featureName = featureName;
@@ -29,11 +21,11 @@ public class UserFeatureItem{
 		return active;
 	}
 
-	public void setId(String id){
+	public void setId(int id){
 		this.id = id;
 	}
 
-	public String getId(){
+	public int getId(){
 		return id;
 	}
 }

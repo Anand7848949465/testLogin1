@@ -30,6 +30,8 @@ public class UserFeatureActivity extends AppCompatActivity {
     ArrayList<UserFeatureItem> list=new ArrayList<>();
     ApiInterface apiInterface;
     String url="";
+    String token;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +42,13 @@ public class UserFeatureActivity extends AppCompatActivity {
 //        recyclerView.setAdapter(adapter);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        apiInterface= RetrofitInstance.getRetrofit().create(ApiInterface.class);
+        apiInterface= RetrofitInstance.getRetrofit("https://itpl.iserveu.tech/").create(ApiInterface.class);
+        Intent intent=getIntent();
+        token=intent.getStringExtra("token");
 
 
 
-        apiInterface.getUrl2().enqueue(new Callback<ResponseURL>() {
+        apiInterface.getDecodedDashboardUrl().enqueue(new Callback<ResponseURL>() {
             @Override
             public void onResponse(Call<ResponseURL> call, Response<ResponseURL> response) {
                 url=response.body().getHello();
@@ -67,7 +71,7 @@ public class UserFeatureActivity extends AppCompatActivity {
     }
 
     private void getDashboard(String base64) {
-        apiInterface.getData(Constants.Token,base64).enqueue(new Callback<DashboardRespose>() {
+        apiInterface.getDashboardData(token,base64).enqueue(new Callback<DashboardRespose>() {
             @Override
             public void onResponse(Call<DashboardRespose> call, Response<DashboardRespose> response) {
                 if(response.body()!=null){
